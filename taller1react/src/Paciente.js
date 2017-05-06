@@ -10,26 +10,33 @@ export default class paciente extends Component{
 
 		this.props.informacion.forEach((paciente) =>{
 				if(paciente.id !== termino) {
-					cadapaciente.push(<MostrarCadaPaciente paciente={paciente} key={paciente.id}/>);
+					cadapaciente.push(<MostrarCadaPaciente paciente={paciente} key={paciente.idPaciente}/>);
 					
 				}
-				termino = paciente.id;
+				termino = paciente.idPaciente;
 			});	
 
 
 		return(
-			<table>
+				<div><h3>PACIENTES</h3>
+				<table>
 					<thead>
 						<tr>
-							<th>Paciente</th>
-							<th></th>
+							<th>Identificacion</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Direccion</th>
+							<th>Telefono</th>
+							<th>Fecha de Nacimiento</th>
+							<th>Edad</th>
+							<th>Genero</th>
 						</tr>
 					</thead>
 					<tbody>
 						{cadapaciente}
-						
 					</tbody>
 				</table>
+				</div>
 			);
 	}
 }

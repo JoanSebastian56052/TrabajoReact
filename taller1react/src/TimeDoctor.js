@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import moment from 'moment'
 import events from './events'
 
-import GuardaCitas from './GuardaCitas'
+
 
 
 import BigCalendar from 'react-big-calendar'
@@ -14,7 +14,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 BigCalendar.momentLocalizer(moment); 
 
 
-class MyCalendar extends Component {
+class TimeDoctor extends Component {
   constructor (props) {
     super(props);
 
@@ -23,9 +23,8 @@ class MyCalendar extends Component {
     this.cambioentrada = this.cambioentrada.bind(this);
 
     this.state = {
-      citas:[],
-      events: events,
-      nombrePaciente: '',
+      horario:[],
+      idDoctor: '',
       fechaSeleccion: null,
       horaInicial: new Date(),
       horaFinal: new Date()
@@ -44,14 +43,13 @@ class MyCalendar extends Component {
     e.preventDefault(); //cancela el evento si es cancelable
 
     var nuevoitem ={
-      title: this.state.nombrePaciente,
+      title: this.state.idDoctor,
       start: this.state.horaInicial,
       end: this.state.horaFinal
     };
 
     this.setState((prevState)=>({
-      citas: prevState.citas.concat(nuevoitem),
-      nombrePaciente: ''
+      horario: prevState.horario.concat(nuevoitem)
     }))
     console.log(this.state.citas);
     
@@ -59,8 +57,8 @@ class MyCalendar extends Component {
 
 
   cambioentrada(e){
-    this.setState({nombrePaciente: e.target.value})
-    console.log(this.state.nombrePaciente);
+    this.setState({idDoctor: e.target.value})
+    console.log(this.state.idDoctor);
   }
 
   seleccionevento(nada){
@@ -85,13 +83,18 @@ class MyCalendar extends Component {
       
       <center>
       <form onSubmit={this.guardardatos}>
-        <h2>Agendar Cita</h2>
-          Paciente<input value={this.state.nombrePaciente} placeholder="Paciente" onChange={this.cambioentrada}/>
-          doctor<input type="text" name="idDoctor" placeholder="Doctor" />
+        <h2>Horario Doctores</h2>
+          Doctor<input value={this.state.idDoctor} placeholder="Doctor" onChange={this.cambioentrada}/>
+          
 
           <button>Guardar</button>
-          {console.log(this.state.citas)}
+          {console.log(this.state.horario)}
         </form>
+      </center>
+        <center>
+      <h3>Horario Seleccionado</h3>
+      <p>{"hora inicio:" + this.state.horaInicial}</p>
+      <p>{"hora fin:" + this.state.horaFinal}</p>
       </center>
 
       <BigCalendar
@@ -100,21 +103,12 @@ class MyCalendar extends Component {
         startAccessor='start'
         endAccessor='end'
         selectable={true}
-        events={this.state.citas}
-        onSelectSlot={(slotInfo) => this.fechaseleccionada(slotInfo)}
-        onSelectEvent={(nada)=>this.seleccionevento(nada)}
+        events={this.state.horario}
+        onSelectSlot={(slotInfo) => this.fechaseleccionada(slotInfo)}        
         defaultView='week'
+        min = {new Date(2017,4,4,6,0,0)}
+        max = {new Date(2017,4,4,19,0,0)}
       />
-      <center>
-      <h3>Hora de la cita</h3>
-      <p>{"hora inicio:" + this.state.horaInicial}</p>
-      <p>{"hora fin:" + this.state.horaFinal}</p>
-      </center>
-
-
-      <h3>Listado de citas</h3>
-      <GuardaCitas citas={this.state.citas}/>
-
       </div>
       
     );
@@ -124,7 +118,4 @@ class MyCalendar extends Component {
 
 
 
-export default MyCalendar;
-
-
-
+export default TimeDoctor;
