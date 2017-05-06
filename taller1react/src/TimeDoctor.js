@@ -24,7 +24,7 @@ class TimeDoctor extends Component {
 
     this.state = {
       horario:[],
-      idDoctor: '',
+      idDoctor: this.props.idDoctor,
       fechaSeleccion: null,
       horaInicial: new Date(),
       horaFinal: new Date()
@@ -79,18 +79,6 @@ class TimeDoctor extends Component {
 
     return (
       <div id="calendario" >
-
-      
-      <center>
-      <form onSubmit={this.guardardatos}>
-        <h2>Horario Doctores</h2>
-          Doctor<input value={this.state.idDoctor} placeholder="Doctor" onChange={this.cambioentrada}/>
-          
-
-          <button>Guardar</button>
-          {console.log(this.state.horario)}
-        </form>
-      </center>
         <center>
       <h3>Horario Seleccionado</h3>
       <p>{"hora inicio:" + this.state.horaInicial}</p>
@@ -109,6 +97,12 @@ class TimeDoctor extends Component {
         min = {new Date(2017,4,4,6,0,0)}
         max = {new Date(2017,4,4,19,0,0)}
       />
+      <center>
+      <form onSubmit={this.guardardatos}>
+          <button>Guardar</button>
+          {console.log(this.state.horario)}
+      </form>
+      </center>
       </div>
       
     );

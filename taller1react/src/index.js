@@ -5,7 +5,7 @@ import Paciente from './Paciente';
 import Agenda from './Agenda';
 import { PropTypes } from 'react';
 import Doctor from './Doctor.js';
-
+import HorarioDoctores from './HorarioDoctores';
 
 //import App from './App';
 //import './index.css';
@@ -66,6 +66,8 @@ let cita = [
 const app = document.getElementById('app');
 //ReactDOM.render(<Paciente informacion ={pacientes}/>, app);
 //ReactDOM.render(<Doctor informacion ={doctores}/>, app);
-ReactDOM.render(<Agenda />, document.getElementById('calen'));
+//ReactDOM.render(<Agenda />, document.getElementById('calen'));
+ReactDOM.render(<HorarioDoctores informacion ={doctores}/>, app);
+
 
 //require("react-big-calendar/lib/css/react-big-calendar.css");

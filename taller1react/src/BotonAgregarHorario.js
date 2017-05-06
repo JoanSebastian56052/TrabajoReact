@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import TimeDoctor from './TimeDoctor';
 
 export default class BotonAgendarCita extends Component{
+	constructor(props){
+		super(props);
+		
+	}
 	render(){
 		return(
-			
-			<input type="button" value="Agregar Horario"/>
-
+			<div>
+			<TimeDoctor idDoctor = {this.props.horario}/>
+			</div>
 			);
 	}
 }

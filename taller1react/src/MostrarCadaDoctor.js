@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import BotonAgregarHorario from './BotonAgregarHorario.js';
 
 export default class MostrarCadaDoctor extends Component{
+	constructor(props){
+		super(props);
+	}
 	render(){
 		return(
 			<tr>
@@ -9,7 +12,6 @@ export default class MostrarCadaDoctor extends Component{
 					<td>{this.props.doctor.idDoctor} </td>
 					<td>{this.props.doctor.nombre} </td>
 					<td>{this.props.doctor.apellido}</td>
-					<td><BotonAgregarHorario horario={this.props.doctor.idDoctor} key={this.props.doctor.idDoctor}/></td>
 			</tr>
 			);
 	}
