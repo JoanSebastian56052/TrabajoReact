@@ -9,10 +9,10 @@ export default class HorarioDoctores extends Component{
 
 	render(){
 			return(
-					<tr>
-					<td><h3>Doctor(a) {this.props.doctor.idDoctor}: {this.props.doctor.nombre} {this.props.doctor.apellido}</h3>
-					<BotonAgregarHorario horario={this.props.doctor.idDoctor} key={this.props.doctor.idDoctor}/></td>
-					</tr>
+					
+					<div><h3>Doctor(a) {this.props.doctor.idDoctor}: {this.props.doctor.nombre} {this.props.doctor.apellido}</h3>
+					<BotonAgregarHorario horario={this.props.doctor.idDoctor} key={this.props.doctor.idDoctor}/>
+					</div>
 			);
 	}
 }

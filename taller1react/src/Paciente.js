@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MostrarCadaPaciente from './MostrarCadaPaciente';
+import ListaPacientes from './ListaPacientes';
 
 
 export default class paciente extends Component{
@@ -8,7 +9,7 @@ export default class paciente extends Component{
 		let boton = [];
 		let termino = null;
 
-		this.props.informacion.forEach((paciente) =>{
+		ListaPacientes.forEach((paciente) =>{
 				if(paciente.id !== termino) {
 					cadapaciente.push(<MostrarCadaPaciente paciente={paciente} key={paciente.idPaciente}/>);
 					

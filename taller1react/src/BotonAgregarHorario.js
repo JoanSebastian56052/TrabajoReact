@@ -9,8 +9,10 @@ export default class BotonAgendarCita extends Component{
 	render(){
 		return(
 			<div>
+			
 			<TimeDoctor idDoctor = {this.props.horario}/>
 			</div>
+			
 			);
 	}
 }

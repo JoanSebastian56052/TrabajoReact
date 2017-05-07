@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MostrarHorarioDoctores from './MostrarHorarioDoctores.js';
+import ListaDoctores from './ListaDoctores';
 
 
 export default class HorarioDoctores extends Component{
@@ -8,7 +9,7 @@ export default class HorarioDoctores extends Component{
 		let boton = [];
 		let termino = null;
 
-		this.props.informacion.forEach((doctor) =>{
+		ListaDoctores.forEach((doctor) =>{
 				if(doctor.id !== termino) {
 					cadadoctor.push(<MostrarHorarioDoctores doctor={doctor} key={doctor.idDoctor}/>);
 					

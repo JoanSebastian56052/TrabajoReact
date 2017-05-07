@@ -90,6 +90,7 @@ class TimeDoctor extends Component {
         selectable={true}
         events={this.state.horario}
         defaultView='week'
+        onSelectSlot={(slotInfo) => this.fechaseleccionada(slotInfo)}  
         min = {new Date(2017,4,4,6,0,0)}
         max = {new Date(2017,4,4,19,0,0)}
       />
