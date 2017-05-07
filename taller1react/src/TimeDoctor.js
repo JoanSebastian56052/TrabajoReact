@@ -61,10 +61,7 @@ class TimeDoctor extends Component {
     console.log(this.state.idDoctor);
   }
 
-  seleccionevento(nada){
-    console.log('no')
-  }
-
+  
 
 
   
@@ -92,7 +89,6 @@ class TimeDoctor extends Component {
         endAccessor='end'
         selectable={true}
         events={this.state.horario}
-        onSelectSlot={(slotInfo) => this.fechaseleccionada(slotInfo)}        
         defaultView='week'
         min = {new Date(2017,4,4,6,0,0)}
         max = {new Date(2017,4,4,19,0,0)}
