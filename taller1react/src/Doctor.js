@@ -18,9 +18,9 @@ export default class doctor extends Component{
 			});	
 
 
-		return(
+		return(<center>
 				<div><h3>DOCTORES</h3>
-				<table>
+				<table className= "App-tablas">
 					<thead>
 						<tr>
 							<th>Identificacion</th>
@@ -34,6 +34,7 @@ export default class doctor extends Component{
 					</tbody>
 				</table>
 				</div>
+			 </center>
 			);
 	}
 }

@@ -12,6 +12,7 @@ export default class MostrarCadaDoctor extends Component{
 					<td>{this.props.doctor.idDoctor} </td>
 					<td>{this.props.doctor.nombre} </td>
 					<td>{this.props.doctor.apellido}</td>
+					<td>{this.props.doctor.horario}</td>
 			</tr>
 			);
 	}

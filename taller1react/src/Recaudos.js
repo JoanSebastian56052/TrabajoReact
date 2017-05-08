@@ -16,7 +16,7 @@ export default class Recaudos extends Component {
 		return(
 			<center>
 				<h3>RECAUDOS</h3>
-				<table>
+				<table className= "App-tablas">
 					<thead>
 						<tr>
 							<th>Mes</th>

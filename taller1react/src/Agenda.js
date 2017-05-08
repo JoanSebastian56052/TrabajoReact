@@ -23,8 +23,9 @@ class Agenda extends Component {
 
     return (
       <div id="calendario" >
-      <h3>CITAS AGENDADAS</h3>
-
+      <center>
+        <h3>CITAS AGENDADAS</h3>
+      </center>
       <BigCalendar
         
         style={{height: '420px'}}
