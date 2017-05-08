@@ -62,10 +62,12 @@ export default class MostrarRecaudos extends Component {
 					break;
 
 			}
-			recaudo.push(<tr><td>{mesLetras}</td>
-				<td>{this.props.doctor.nombre} {this.props.doctor.apellido}</td>
-				<td>{recaudado}</td></tr>
-			)
+			if (recaudado !== 0) {
+				recaudo.push(<tr><td>{mesLetras}</td>
+					<td>{this.props.doctor.nombre} {this.props.doctor.apellido}</td>
+					<td>{recaudado}</td></tr>
+				)
+			}
 		}
 		
 		return (

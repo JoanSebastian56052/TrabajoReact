@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListaPacientes from './ListaPacientes';
 import ListaCitas from './ListaCitas';
 import HistoriasClinicas from './HistoriasClinicas';
+import ListaDoctores from './ListaDoctores';
 
 
 
@@ -17,8 +18,9 @@ export default class Consulta extends Component{
 			direccionPaciente: " ",
 			telefonoPaciente: " ",
 			edadPaciente: " ",
-			antecedentes: ""
-
+			antecedentes: "",
+			nombreDoctor:"",
+			diagnostico: " "
 		}
 
 		this.tomaValor = this.tomaValor.bind(this);
@@ -32,7 +34,20 @@ export default class Consulta extends Component{
 		console.log(this.state.codigoCita);
 
 	}
+	tomarDiagnostico(e) {
+		this.setState({diagnostico: e.target.value})
+	}
 
+	guardarDiagnostico() {
+		let termino = null;
+		HistoriasClinicas.forEach((historia) =>{
+			ListaCitas.forEach((cita) => {
+				if(historia.idPaciente==cita.paciente && this.state.codigoCita==cita.idCita && historia.idPaciente !== termino) {
+					historia.Dianostico = historia.Dianostico + this.state.diagnostico;
+				}
+			});
+		});
+	}
 
 	buscarCita(){
 		this.setState({codigoCita: " "});
@@ -41,10 +56,9 @@ export default class Consulta extends Component{
 		let termino = null;
 		ListaCitas.forEach((cita) =>{
 				if(cita.idCita !== termino && cita.idCita ==this.state.codigoCita) {
-					console.log("La cita existe");
-
+					
 					this.setState({valor: cita.valor , doctor: cita.doctor});
-
+					console.log("La cita existe ");
 					
 					ListaPacientes.forEach((paciente)=>{
 						if(paciente.idPaciente== cita.paciente){
@@ -62,7 +76,11 @@ export default class Consulta extends Component{
 							this.setState({antecedentes: historia.Antecedentes});
 						}
 					});
-
+					ListaDoctores.forEach((doctor) => {
+						if(doctor.idDoctor==cita.doctor) {
+							this.setState({nombreDoctor: doctor.nombre + doctor.apellido});
+						}
+					});
 
 					}
 					termino = cita.idCita;
@@ -73,33 +91,23 @@ export default class Consulta extends Component{
 		
 
 	render(){
-		
 		return(
 			<div>
 			<center>
-			 {this.state.codigoCita}
-			Codigo de la cita<input type="text"  placeholder="Codigo cita" onChange={this.tomaValor} onFocus={this.value=""}/>
+			Codigo de la cita: <input type="text"  placeholder="Codigo cita" onChange={this.tomaValor} onFocus={this.value=""}/>
 			<input type="button" value="Buscar" onClick={this.buscarCita}/>
-			<p>
-				{this.state.doctor + " "}
-				{this.state.valor}
-				{this.state.nombrePaciente}
-				{this.state.apellidoPaciente}
-				direccion
-				{this.state.direccionPaciente}
-				telefono
-				{this.state.telefonoPaciente}
-				Edad
-				{this.state.edadPaciente}
-
-
-			</p>
-			<p>{"Antecedentes: " + this.state.antecedentes}</p>
-
-
-			<input type="text" placeholder="Diagnostico" />
-			<input type="button" value="Guardar y cobrar" />
-			</center>
+				<p>Identificacion del Doctor: {this.state.doctor + " "}</p>
+				<p>Nombre del Doctor: {this.state.nombreDoctor + " "}</p>
+				<p>Valor de la cita: {this.state.valor}</p>
+				<p>Nombre del Paciente: {this.state.nombrePaciente} {this.state.apellidoPaciente}</p>
+				<p>Direccion: {this.state.direccionPaciente}</p>
+				<p>Telefono: {this.state.telefonoPaciente}</p>
+				<p>Edad: {this.state.edadPaciente}</p>
+				<p>{"Antecedentes: " + this.state.antecedentes}</p>
+				<input type="text" placeholder="Diagnostico" onChange={this.tomarDiagnostico} onFocus={this.value=""}/>
+				<input type="button" value="Guardar " onClick={this.guardarDiagnostico}/>
+				<p>{"Diagnostico: " + this.state.diagnostico}</p>
+				</center>
 			</div> 
 			);
 	}

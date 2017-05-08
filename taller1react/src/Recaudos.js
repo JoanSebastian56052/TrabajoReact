@@ -14,7 +14,7 @@ export default class Recaudos extends Component {
 			termino = doctor.idDoctor;
 		});
 		return(
-			<div>
+			<center>
 				<h3>RECAUDOS</h3>
 				<table>
 					<thead>
@@ -26,7 +26,7 @@ export default class Recaudos extends Component {
 					</thead>
 					{cadarecaudo}
 				</table>
-			</div>
+			</center>
 			);
 	}
 }

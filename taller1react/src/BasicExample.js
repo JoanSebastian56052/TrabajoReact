@@ -22,7 +22,7 @@ const BasicExample = () => (
         <li><Link to="/citas_agendadas">Agenda Citas</Link></li>
         <li><Link to="/consulta">Consulta</Link></li>
         <li><Link to="/horario_doctores">Horario Doctores</Link></li>
-        <li><Link to="/recaudado_mes">recaudado por mes</Link></li>
+        <li><Link to="/recaudado_mes">Recaudado por mes</Link></li>
 
 
         
